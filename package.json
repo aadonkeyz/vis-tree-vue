@@ -1,0 +1,24 @@
+{
+  "name": "vis-tree-vue",
+  "version": "1.0.0",
+  "description": "vue version website of vis-tree",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bytedance/vis-tree"
+  },
+  "author": "aadonkeyz <aadonkeyz@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "@vis-tree/vue": "^0.1.5",
+    "vue": "^3.0.11"
+  },
+  "devDependencies": {
+    "element-plus": "^1.0.2-beta.40",
+    "vuepress": "^2.0.0-beta.9"
+  }
+}
