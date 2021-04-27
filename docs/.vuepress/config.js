@@ -6,14 +6,28 @@ module.exports = {
   locales: {
     '/': {
       lang: 'zh-CN',
-      selectLanguageName: '中文',
       title: '@vis-tree/vue',
     },
     '/en/': {
       lang: 'en-US',
-      selectLanguageName: '英文',
       title: '@vis-tree/vue'
     }
+  },
+  themeConfig: {
+    home: '/Introduction.html',
+    repo: 'bytedance/vis-tree',
+    selectLanguageText: '选择语言（Languages）',
+    locales: {
+      '/': {
+        selectLanguageName: '中文',
+      },
+      '/en/': {
+        selectLanguageName: 'English',
+      }
+    },
+    editLink: false,
+    notFound: ['路径出问题了（Looks like we have got some broken links）'],
+    backToHome: '回首页（Back to home）'
   },
   clientAppEnhanceFiles: path.resolve(__dirname, './clientAppEnhance.js'),
   bundlerConfig: {
