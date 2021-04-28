@@ -13,25 +13,12 @@
       class="vis-tree"
       ref="visTree"
       :data-source="dataSource"
-      :scale-ratio="scaleRatio"
       :options="options"
     >
       <template v-slot:node="nodeSlotProps">
         <div class="node-container">
           <div class="node-content">
             {{nodeSlotProps.node.key}}
-          </div>
-
-          <div class="node-dynamic-btns">
-            <i
-              v-if="nodeSlotProps.parentNode"
-              class="delete-btn el-icon-delete"
-              @click="() => handleDelete(nodeSlotProps.parentNode, nodeSlotProps.node.key)"
-            />
-            <i
-              class="add-btn el-icon-plus"
-              @click="() => handleAdd(nodeSlotProps.node, nodeSlotProps.expanded)"
-            />
           </div>
 
           <i
@@ -121,21 +108,9 @@ export default {
       options: {
           defaultScrollInfo: {
             key: originDataSource.key,
-            top: 20,
-          },
-          defaultExpandAll: true,
-          nodeWidth: 100,
-          nodeHeight: 50,
-      },
-      count: 1,
-      shouldExpandNodeKey: undefined
+          }
+      }
     };
-  },
-  updated() {
-    if (this.shouldExpandNodeKey) {
-      this.$refs.visTree.toggleNodeExpanded(this.shouldExpandNodeKey);
-      this.shouldExpandNodeKey = undefined;
-    }
   },
   methods: {
     handleScaleRatioChange(e) {
@@ -145,26 +120,6 @@ export default {
     toggleNodeExpanded(key) {
       this.$refs.visTree.toggleNodeExpanded(key);
     },
-
-    handleDelete(parentNode, deleteKey) {
-      parentNode.children = parentNode.children.filter(
-        (item) => item.key !== deleteKey
-      );
-      this.dataSource = { ...this.dataSource };
-    },
-    
-    handleAdd(node, expanded) {
-      if (node.children) {
-        node.children.push({ key: this.count });
-      } else {
-        node.children = [{ key: this.count }];
-      }
-      this.count += 1;
-      if (!expanded) {
-        this.shouldExpandNodeKey = node.key;
-      }
-      this.dataSource = { ...this.dataSource };
-    }
   }
 };
 </script>
@@ -193,18 +148,10 @@ export default {
   border: 1px solid black;
 }
 .node-content {
-  margin-top: 3px;
-  text-align: center;
-}
-.node-dynamic-btns {
-  display: flex;
-  justify-content: space-around;
-}
-.delete-btn {
-  color: #ff4d4f
-}
-.add-btn {
-  color: #1890ff
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .node-switcher {
   width: 14px;
