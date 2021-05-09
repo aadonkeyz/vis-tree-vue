@@ -18,74 +18,114 @@
       <template v-slot:node="nodeSlotProps">
         <div class="node-container">
           <div class="node-content">
-            {{nodeSlotProps.node.key}}
+            {{ nodeSlotProps.node.key }}
           </div>
 
           <i
-            v-if="nodeSlotProps.node.children && nodeSlotProps.node.children.length > 0"
+            v-if="
+              nodeSlotProps.node.children &&
+              nodeSlotProps.node.children.length > 0
+            "
             class="node-switcher"
-            :class="nodeSlotProps.expanded ? 'el-icon-circle-plus-outline' : 'el-icon-remove-outline'"
+            :class="
+              nodeSlotProps.expanded
+                ? 'el-icon-circle-plus-outline'
+                : 'el-icon-remove-outline'
+            "
             :style="{ color: `${nodeSlotProps.expanded ? 'green' : 'red'}` }"
             @click="() => toggleNodeExpanded(nodeSlotProps.node.key)"
           />
         </div>
+      </template>
+
+      <template v-slot:line="lineSlotProps">
+        <div
+          v-if="lineSlotProps.containerWidth === 0"
+          :style="{
+            width: '1px',
+            height: `${lineSlotProps.containerHeight}px`,
+            background: 'black',
+          }"
+        />
+
+        <div
+          v-if="lineSlotProps.containerHeight === 0"
+          :style="{
+            width: `${lineSlotProps.containerWidth}px`,
+            height: '1px',
+            background: 'black',
+          }"
+        />
+
+        <svg
+          v-if="lineSlotProps.containerWidth && lineSlotProps.containerHeight"
+          :width="`${lineSlotProps.containerWidth}px`"
+          :height="`${lineSlotProps.containerHeight}px`"
+        >
+          <path
+            :d="`M ${lineSlotProps.startPointCoordinate[0]} ${lineSlotProps.startPointCoordinate[1]}, L ${lineSlotProps.stopPointCoordinate[0]} ${lineSlotProps.stopPointCoordinate[1]}`"
+            strokeWidth="1px"
+            fill="none"
+            stroke="black"
+          />
+        </svg>
       </template>
     </vis-tree>
   </div>
 </template>
 
 <script>
-import VisTree from '@vis-tree/vue';
-import 'element-plus/lib/theme-chalk/index.css';
+import VisTree from "@vis-tree/vue";
+import "element-plus/lib/theme-chalk/index.css";
 
 const originDataSource = {
-  key: 'O',
+  key: "O",
   children: [
     {
-      key: 'E',
+      key: "E",
       children: [
         {
-          key: 'A',
+          key: "A",
         },
         {
-          key: 'D',
+          key: "D",
           children: [
             {
-              key: 'B',
+              key: "B",
             },
             {
-              key: 'C',
+              key: "C",
             },
           ],
         },
       ],
     },
     {
-      key: 'F',
+      key: "F",
     },
     {
-      key: 'N',
+      key: "N",
       children: [
         {
-          key: 'G',
+          key: "G",
         },
         {
-          key: 'M',
+          key: "M",
           children: [
             {
-              key: 'H',
+              key: "H",
             },
             {
-              key: 'I',
+              key: "I",
             },
             {
-              key: 'J',
+              key: "J",
             },
             {
-              key: 'K',
+              key: "K",
             },
             {
-              key: 'L',
+              key: "L",
             },
           ],
         },
@@ -106,17 +146,20 @@ export default {
       scaleRatio: 1,
       dataSource: originDataSource,
       options: {
-          defaultScrollInfo: {
-            key: originDataSource.key,
-          }
-      }
+        defaultScrollInfo: {
+          key: originDataSource.key,
+          top: 40,
+        },
+        defaultExpandAll: true,
+          lineType: "none",
+      },
     };
   },
   methods: {
     toggleNodeExpanded(key) {
       this.$refs.visTree.toggleNodeExpanded(key);
     },
-  }
+  },
 };
 </script>
 

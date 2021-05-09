@@ -2,13 +2,17 @@
 title: Introduction
 ---
 
+[[toc]]
+
 # Introduction
 
 ## Demo
 
 <DynamicDataSource />
 
-## Feature
+@[code](@components/DynamicDataSource.vue)
+
+## Features
 
 - Support users to use custom components to render nodes and connecting lines
 - Support multiple layout methods

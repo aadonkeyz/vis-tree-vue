@@ -2,11 +2,15 @@
 title: 介绍
 ---
 
+[[toc]]
+
 # 介绍
 
 ## 演示
 
 <DynamicDataSource />
+
+@[code](@components/DynamicDataSource.vue)
 
 ## 特性
 

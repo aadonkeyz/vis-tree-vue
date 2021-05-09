@@ -1,9 +1,18 @@
 <template>
   <div class="container">
+    <input
+      class="scale-handler"
+      type="range"
+      :min="0.1"
+      :max="2"
+      :step="0.01"
+      v-model="scaleRatio"
+    />
     <vis-tree
       class="vis-tree"
       ref="visTree"
       :data-source="dataSource"
+      :scale-ratio="scaleRatio"
       :options="options"
     >
       <template v-slot:node="nodeSlotProps">
@@ -99,7 +108,9 @@ export default {
       options: {
           defaultScrollInfo: {
             key: originDataSource.key,
-          }
+            top: 40,
+          },
+          defaultExpandAll: true,
       }
     };
   },
@@ -117,6 +128,12 @@ export default {
   background-color: #fff;
   border: 1px solid #ebedf1;
   border-radius: 1px;
+}
+.scale-handler {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  z-index: 1;
 }
 .vis-tree {
   width: 100%;

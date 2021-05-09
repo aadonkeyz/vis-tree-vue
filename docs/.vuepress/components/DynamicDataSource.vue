@@ -6,8 +6,7 @@
       :min="0.1"
       :max="2"
       :step="0.01"
-      :value="scaleRatio"
-      :onChange="handleScaleRatioChange"
+      v-model="scaleRatio"
     />
     <vis-tree
       class="vis-tree"
@@ -138,10 +137,6 @@ export default {
     }
   },
   methods: {
-    handleScaleRatioChange(e) {
-      this.scaleRatio = e.target.value;
-    },
-
     toggleNodeExpanded(key) {
       this.$refs.visTree.toggleNodeExpanded(key);
     },

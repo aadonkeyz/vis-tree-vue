@@ -2,6 +2,8 @@
 title: 快速开始
 ---
 
+[[toc]]
+
 # 快速开始
 
 ## 纯展示
@@ -12,6 +14,8 @@ title: 快速开始
 
 <Display />
 
+@[code](@components/Display.vue)
+
 ## 可交互
 
 - 通过 `renderNode({ node, expanded, parentNode })` 中的 `expanded` 的值来判断节点的状态（展开/收起）
@@ -19,14 +23,20 @@ title: 快速开始
 
 <Interactive />
 
+@[code](@components/Interactive.vue)
+
 ## 可缩放
 
 通过 `scaleRatio` 控制画布的缩放
 
 <Scalable />
 
+@[code](@components/Scalable.vue)
+
 ## 动态改变数据源
 
 通过改变 `dataSource` 来刷新树，刷新前后根节点相对画布的位置不变
 
 <DynamicDataSource />
+
+@[code](@components/DynamicDataSource.vue)

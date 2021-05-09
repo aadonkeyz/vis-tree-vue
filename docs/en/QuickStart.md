@@ -2,6 +2,8 @@
 title: Quick start
 ---
 
+[[toc]]
+
 # Quick start
 
 ## Pure display
@@ -12,6 +14,8 @@ title: Quick start
 
 <Display />
 
+@[code](@components/Display.vue)
+
 ## Interactive
 
 - Judge the state of the node (expanded/collapsed) by the value of `expanded` in `renderNode({ node, expanded, parentNode })`
@@ -19,14 +23,20 @@ title: Quick start
 
 <Interactive />
 
+@[code](@components/Interactive.vue)
+
 ## Scalable
 
 Control the zoom of the canvas through `scaleRatio`
 
 <Scalable />
 
+@[code](@components/Scalable.vue)
+
 ## Dynamically change the data source
 
 Refresh the tree by changing `dataSource`, the position of the root node relative to the canvas remains unchanged before and after refresh
 
 <DynamicDataSource />
+
+@[code](@components/DynamicDataSource.vue)
